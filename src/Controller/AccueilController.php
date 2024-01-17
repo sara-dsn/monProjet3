@@ -22,8 +22,10 @@ class AccueilController extends AbstractController
     #[Route('/page2', name: 'app_page2')]
     public function page2(): Response
     {
+        $info=['lastname'=>'dosana','firstname'=>'sara','email'=>'dosana@gmail.fr','birthdate'=>'24/09/2000'];
         return $this->render('accueil/page2.html.twig', [
             'controller_name' => 'AccueilController',
+            'informations'=>$info,
         ]);
     }
 }
