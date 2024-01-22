@@ -22,6 +22,9 @@ class Jeu1 extends Fixture
         $manager->persist($artist1);
         $disc1=new Disc();
         $disc1->setTitle("Songs for Deaf");
+        $disc1->setYear(2023);
+        $disc1->setPrice(2023);
+        $disc1->setGenre("Rock");
         $disc1->setPicture("https://en.wikipedia.org/wiki/SOngs_for_the_Deaf#/media/File:Queens_of_the_Stone_Age_-_Songs_for_the_Deaf.png");
         $disc1->setLabel("Interscope Records");
         

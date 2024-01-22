@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\DiscRepository;
+use App\Entity\Artist;
+use App\Entity\Disc;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\DiscRepository;
 
 #[ORM\Entity(repositoryClass: DiscRepository::class)]
 class Disc
@@ -22,9 +24,6 @@ class Disc
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $artist = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $year = null;
 
     #[ORM\Column(length: 255)]
@@ -36,8 +35,7 @@ class Disc
     #[ORM\Column(length: 255)]
     private ?string $price = null;
 
-    #[ORM\Column]
-    private ?int $artiste_id = null;
+
 
     #[ORM\ManyToOne(inversedBy: 'discs')]
     private ?artist $artiste = null;
@@ -125,12 +123,12 @@ class Disc
 
     public function getArtistId(): ?int
     {
-        return $this->artiste_id;
+        return $this->artiste;
     }
 
-    public function setArtistId(int $artiste_id): static
+    public function setArtistId(Artist $artiste_id): static
     {
-        $this->artiste_id = $artiste_id;
+        $this->artiste = $artiste_id;
 
         return $this;
     }

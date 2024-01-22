@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\ArtistRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Artist;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArtistRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: ArtistRepository::class)]
 class Artist
@@ -21,7 +22,7 @@ class Artist
     #[ORM\Column(length: 255)]
     private ?string $URL = null;
 
-    #[ORM\OneToMany(mappedBy: 'artiste', targetEntity: Disc::class)]
+    #[ORM\OneToMany(mappedBy: 'artiste_id', targetEntity: Disc::class)]
     private Collection $discs;
 
     public function __construct()
@@ -33,7 +34,12 @@ class Artist
     {
         return $this->id;
     }
+    public function setId(string $id): static
+    {
+        $this->id = $id;
 
+        return $this;
+    }
     public function getName(): ?string
     {
         return $this->name;
